@@ -1,14 +1,14 @@
-# Nome do Seu Aplicativo
+# Pesquisa de satisfação 
 
 ## Instalação
 
 Para começar, siga estas etapas para instalar e executar o aplicativo:
 
-1. Clone este repositório:
+1. Clone este repositório: git clone https://github.com/hamiltonoliveira/PesquisaSatisfacaoApp.git
 
-2. Navegue para o diretório do projeto:
+2. Navegue para o diretório do projeto: 
 
-3. Instale as dependências:
+3. Instale as dependências: npm install
 
 4. Inicie o servidor de desenvolvimento:
 

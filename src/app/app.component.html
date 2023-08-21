@@ -8,6 +8,14 @@
         <div class="card-body">
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="mb-3">
+              <label for="nome" class="form-label">Nome:</label>
+              <input type="text" id="nome" name="nome" formControlName="nome" class="form-control">
+              <div>
+                <p *ngIf="submitted && f['nome'].errors" class="text-danger">Nome é obrigatório</p>
+              </div>
+            </div>
+
+            <div class="mb-3">
               <label for="email" class="form-label">Email:</label>
               <input type="email" id="email" name="email" formControlName="email" class="form-control">
               <div>
@@ -22,9 +30,12 @@
               </div>
             </div>
             <div class="card-header bg-primary text-white">
-               <button type="submit" class="btn btn-primary btn-block" style="font-size: 28px;">Logar</button>
+               <button type="submit" class="btn btn-primary btn-block" style="font-size: 20px; padding: 5px;">Logar</button>
             </div>
           </form>
+          <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+            <p class="mb-0 small">{{ errorMessage }}</p>
+          </div>
         </div>
       </div>
     </div>
