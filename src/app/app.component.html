@@ -2,27 +2,27 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card">
-        <div class="card-header">
-          <h2 class="text-center">Logar no sistema</h2>
+        <div class="card-header bg-primary text-white">
+          <h2 class="text-center fw-bold">Acesso ao Sistema</h2>
         </div>
         <div class="card-body">
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="mb-3">
               <label for="email" class="form-label">Email:</label>
-              <input type="email" id="email" Name="email"  formControlName="email"  class="form-control">
+              <input type="email" id="email" name="email" formControlName="email" class="form-control">
               <div>
-                <p *ngIf="submitted && f['email'].errors">Email obrigatório</p>
+                <p *ngIf="submitted && f['email'].errors" class="text-danger">Email obrigatório</p>
               </div>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Senha:</label>
-              <input type="password" id="password" Name="password" formControlName="senha"  class="form-control">
+              <input type="password" id="password" name="password" formControlName="senha" class="form-control">
               <div>
-                <p *ngIf="submitted && f['senha'].errors">Senha obrigatório</p>
+                <p *ngIf="submitted && f['senha'].errors" class="text-danger">Senha obrigatória</p>
               </div>
             </div>
-            <div class="form-group">
-            <button type="submit" class="btn btn-primary">Logar</button>
+            <div class="card-header bg-primary text-white">
+               <button type="submit" class="btn btn-primary btn-block" style="font-size: 28px;">Logar</button>
             </div>
           </form>
         </div>
