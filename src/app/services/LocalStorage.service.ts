@@ -20,10 +20,7 @@ export class LocalStorageService {
   }
 
   getJWT(): string | null {
-    if (this.storage) {
-      return this.storage.getItem('jwtToken');
-    }
-    return null;
+    return this.storage ? this.storage.getItem('jwtToken') : null;
   }
 
   removeJWT(): void {

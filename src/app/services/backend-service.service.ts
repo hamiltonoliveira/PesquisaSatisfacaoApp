@@ -9,8 +9,11 @@ import { catchError } from 'rxjs/operators';
 export class AuthService {
 
   private apiUrl = ' https://localhost:7025/api';
+  token: any;
+  usuarioId: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   Autenticar(formDTO: any): Observable<any> {
 
@@ -33,4 +36,33 @@ export class AuthService {
     // Retorne um observable com uma mensagem de erro
     return throwError('Ocorreu um erro. Cadastro existe no sistema');
   }
+
+  EnqueteCadastrar(formDTO2: any): Observable<any> {
+    const url = `${this.apiUrl}/Enquete/Criar`;
+    const token = this.getJWTToken();
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': `Bearer ${token}`
+      })
+    };
+
+    return this.http.post(url, formDTO2,httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getJWTToken(): string | null {
+    const dataString = localStorage.getItem('jwtToken');
+    if (dataString !== null) {
+      const data = JSON.parse(dataString);
+      if (data && typeof data.token === 'string') {
+        return data.token;
+      }
+    }
+    return null;
+  }
 }
+
+

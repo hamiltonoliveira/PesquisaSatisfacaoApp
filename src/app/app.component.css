@@ -3,3 +3,13 @@ p {
   font-size: small;
   color: red;
 }
+
+.custom-h2 {
+  font-size: 1rem; /* Ajuste o tamanho da fonte */
+  line-height: 1.2; /* Ajuste a altura do elemento */
+  margin: 0; /* Remova a margem superior para reduzir espaço */
+}
+
+.bg-gray {
+  background-color: #675555 !important; /* Substitua pela cor de cinza desejada */
+}

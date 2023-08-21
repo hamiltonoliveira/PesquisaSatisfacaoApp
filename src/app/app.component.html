@@ -1,38 +1,39 @@
-<div class="container mt-5">
+<div class="container mt-5" *ngIf="!componentVisible">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card">
         <div class="card-header bg-primary text-white">
-          <h2 class="text-center fw-bold">Acesso ao Sistema</h2>
+          <h2 class="text-center fw-bold" style="font-size: 1.5rem;">Acesso ao Sistema</h2>
         </div>
         <div class="card-body">
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="mb-3">
-              <label for="nome" class="form-label">Nome:</label>
-              <input type="text" id="nome" name="nome" formControlName="nome" class="form-control">
+              <label for="nome" class="form-label" style="font-size: 0.9rem;">Nome:</label>
+              <input type="text" id="nome" name="nome" formControlName="nome" class="form-control" style="font-size: 0.9rem;">
               <div>
-                <p *ngIf="submitted && f['nome'].errors" class="text-danger">Nome é obrigatório</p>
+                <p *ngIf="submitted && f['nome'].errors" class="text-danger" style="font-size: 0.8rem;">Nome é obrigatório</p>
               </div>
             </div>
 
             <div class="mb-3">
-              <label for="email" class="form-label">Email:</label>
-              <input type="email" id="email" name="email" formControlName="email" class="form-control">
+              <label for="email" class="form-label" style="font-size: 0.9rem;">Email:</label>
+              <input type="email" id="email" name="email" formControlName="email" class="form-control" style="font-size: 0.9rem;">
               <div>
-                <p *ngIf="submitted && f['email'].errors" class="text-danger">Email obrigatório</p>
+                <p *ngIf="submitted && f['email'].errors" class="text-danger" style="font-size: 0.8rem;">Email obrigatório</p>
               </div>
             </div>
             <div class="mb-3">
-              <label for="password" class="form-label">Senha:</label>
-              <input type="password" id="password" name="password" formControlName="senha" class="form-control">
+              <label for="password" class="form-label" style="font-size: 0.9rem;">Senha:</label>
+              <input type="password" id="password" name="password" formControlName="senha" class="form-control" style="font-size: 0.9rem;">
               <div>
-                <p *ngIf="submitted && f['senha'].errors" class="text-danger">Senha obrigatória</p>
+                <p *ngIf="submitted && f['senha'].errors" class="text-danger" style="font-size: 0.8rem;">Senha obrigatória</p>
               </div>
             </div>
             <div class="card-header bg-primary text-white">
-               <button type="submit" class="btn btn-primary btn-block" style="font-size: 20px; padding: 5px;">Logar</button>
+               <button type="submit" class="btn btn-primary btn-block" style="font-size: 1rem; padding: 5px;">Logar</button>
             </div>
           </form>
+          <br>
           <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
             <p class="mb-0 small">{{ errorMessage }}</p>
           </div>
@@ -41,3 +42,39 @@
     </div>
   </div>
 </div>
+
+
+<!-- aqui fica formulário Enquetes -->
+
+<div class="card-body d-flex flex-column align-items-center justify-content-center" *ngIf="componentVisible">
+  <form [formGroup]="form2" (ngSubmit)="onSubmit2()">
+    <div class="mb-3">
+      <label for="nome" class="form-label" style="font-size: 0.9rem;">Título:</label>
+      <input type="text" id="nome" name="nome" formControlName="nome" class="form-control" style="font-size: 0.9rem;">
+    </div>
+    <div>
+      <p *ngIf="submitted && f2['nome'].errors" class="text-danger" style="font-size: 0.8rem;">Título é obrigatório</p>
+    </div>
+
+    <div class="mb-3">
+      <select id="nivelSatisfacao" name="nivelSatisfacao" class="form-select" class="form-control"  (change)="onNivelSatisfacaoChange($event)">
+        <option value='' selected>Escolha o nível de satisfação</option>
+        <option value="0">Muito Insatisfeito</option>
+        <option value="1">Insatisfeito</option>
+        <option value="2">Neutro</option>
+        <option value="3">Satisfeito</option>
+        <option value="4">Muito Satisfeito</option>
+      </select>
+    </div>
+
+    <div class="card-header bg-primary text-white">
+      <button type="submit" class="btn btn-primary btn-block" style="font-size: 1rem; padding: 5px;">Votar</button>
+   </div>
+  </form>
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    <p class="mb-0 small">{{ errorMessage }}</p>
+  </div>
+</div>
+
+
+
