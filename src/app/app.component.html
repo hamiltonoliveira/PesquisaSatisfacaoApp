@@ -47,6 +47,10 @@
 <!-- aqui fica formulário Enquetes -->
 
 <div class="card-body d-flex flex-column align-items-center justify-content-center" *ngIf="componentVisible">
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    <p class="mb-0 small">{{ errorMessage }}</p>
+  </div>
+
   <form [formGroup]="form2" (ngSubmit)="onSubmit2()">
     <div class="mb-3">
       <label for="nome" class="form-label" style="font-size: 0.9rem;">Título:</label>
@@ -71,9 +75,7 @@
       <button type="submit" class="btn btn-primary btn-block" style="font-size: 1rem; padding: 5px;">Votar</button>
    </div>
   </form>
-  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-    <p class="mb-0 small">{{ errorMessage }}</p>
-  </div>
+
 </div>
 
 

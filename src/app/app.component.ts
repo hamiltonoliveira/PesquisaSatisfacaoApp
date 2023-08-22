@@ -17,6 +17,8 @@ import {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+
 export class AppComponent implements OnInit {
   errorMessage: string = '';
   EnqueteVisualizar: boolean = false;
@@ -96,10 +98,12 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit2():void{
-    //this.submitted = true;
-    //if (this.form2.invalid) {
-      //return;
-    //}
+    this.submitted = true;
+    if (!this.form2.valid) {
+      this.errorMessage = "Erro no cadastramento: Preencha todos os campos.";
+    } else {
+      // Se o formulário não for válido, faça o que for necessário (exibir erros, etc.)
+    }
 
     const usuarioId = this.getJWTUserId();
 
@@ -116,8 +120,12 @@ export class AppComponent implements OnInit {
           this.errorMessage = "Nível de satisfação: Efetuado o seu cadastramento.";
      }},
      error => {
-      this.errorMessage = "Nível de satisfação: cadastro efetuado.";
-    });
+      if (error.status === 0) {
+        this.errorMessage = "Erro de conexão: Não foi possível se comunicar com o servidor.";
+      } else {
+        this.errorMessage = "Cadastro enquetes: cadastramento efetuado.";
+      }
+  });
     }
 
     onNivelSatisfacaoChange(event: any) {
